@@ -83,19 +83,30 @@ const removeUserController = async (req, res) =>{
 
 const addUserAddressController = async (req, res) =>{
     try{
+        req.body.createdAt = new Date();
+        const endereco = await userService.addUserAddressService(req.params.id, req.body);
 
-
+        if(endereco && endereco.ok){
+            res.status(201).send({ message: `Endereço adicionado com sucesso`});
+        }else{
+            res.status(400).send({ message: `Algo deu errado com o endereço, tente novamente`});
+        }
 
     }catch (err){
         console.log(`erro: ${err.message}`);
-        return res.status(500).send({ message: 'Erro inesperado tente novamente!'});
+        return res.status(500).send({ message: `Erro inesperado tente novamente!`});
     }
 };
 
 const removeUserAddressController = async (req, res) =>{
     try{
+        const endereco = await userService.removeUserAddressService(req.body.id, req.body.addressId);
 
-
+        if(endereco && endereco.ok){
+            res.status(200).send({ message: 'Endereço removido com sucesso'});
+        }else{
+            res.status(400).send({ message: 'Algo deu errado com o endereço, não foi removido, tente novamente'});
+        }
 
     }catch (err){
         console.log(`erro: ${err.message}`);
