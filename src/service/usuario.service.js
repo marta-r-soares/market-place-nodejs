@@ -30,7 +30,7 @@ const addUserAddressService  =  (id, endereco) => {
         {
             $push:{
                 enderecos: endereco,
-            }
+            },
         },
         {
             rawResult: true,
@@ -49,7 +49,7 @@ const removeUserAddressService  =  (id, addressId) => {
                 enderecos: {
                     _id: addressId
                 },
-            }
+            },
         },
         {
             rawResult: true,

@@ -85,34 +85,33 @@ const addUserAddressController = async (req, res) =>{
     try{
         req.body.createdAt = new Date();
         const endereco = await userService.addUserAddressService(req.params.id, req.body);
-
-        if(endereco && endereco.ok){
-            res.status(201).send({ message: `Endereço adicionado com sucesso`});
+    
+        if(endereco.ok == 1){
+          res.status(200).send({ message: 'endereco adicionado com sucesso' });  
         }else{
-            res.status(400).send({ message: `Algo deu errado com o endereço, tente novamente`});
+          res.status(400).send({ message: 'algo deu errado, tente novamente' });  
         }
-
-    }catch (err){
-        console.log(`erro: ${err.message}`);
-        return res.status(500).send({ message: `Erro inesperado tente novamente!`});
-    }
+       
+      } catch (err) {
+        res.status(500).send({ message: "Erro inesperado, tente novamente mais tarde"});
+        console.log(err.message);
+      }
 };
-
-const removeUserAddressController = async (req, res) =>{
-    try{
-        const endereco = await userService.removeUserAddressService(req.body.id, req.body.addressId);
-
-        if(endereco && endereco.ok){
-            res.status(200).send({ message: 'Endereço removido com sucesso'});
+const removeUserAddressController = async (req,res) =>{
+        try{
+        const endereco = await userService.removeUserAddressService(req.body.id,req.body.idEndereco);
+    
+        if(endereco.ok == 1){
+            res.status(200).send({ message: 'endereco removido com sucesso' });  
         }else{
-            res.status(400).send({ message: 'Algo deu errado com o endereço, não foi removido, tente novamente'});
+            res.status(400).send({ message: 'algo deu errado, tente novamente' });  
         }
-
-    }catch (err){
-        console.log(`erro: ${err.message}`);
-        return res.status(500).send({ message: 'Erro inesperado tente novamente!'});
-    }
-};
+        
+        } catch (err) {
+        res.status(500).send({ message: "Erro inesperado, tente novamente mais tarde"});
+        console.log(err.message);
+        }
+    };
 
 const addUserFavProductController = async (req, res) =>{
     try{
