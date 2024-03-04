@@ -8,6 +8,6 @@ router.get("/findAll", authMiddleware, categoriaController.findAllCategoriaContr
 
 router.post("/create", authMiddleware, categoriaController.createCategoriaController);
 
-router.update("/update/:id", authMiddleware, categoriaController.updateCategoriaController);
+router.put("/update/:id", authMiddleware, categoriaController.updateCategoriaController);
 
 router.delete("/delete/:id", authMiddleware, categoriaController.deleteCategoriaController);
