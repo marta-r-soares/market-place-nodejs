@@ -1,6 +1,5 @@
 
 const jwt = require("jsonwebtoken");
-
 const { findUserByIdService } = require("../service/usuario.service");
 
 module.exports = async (req, res, next) => {
@@ -27,7 +26,7 @@ module.exports = async (req, res, next) => {
             return res.status(500).send({ message: "Token invalido!" });
         }
 
-        const user = await findUserByIdService(decoded.id);
+        const user = await findUserByIdService (decoded.id);
 
         if (!user || !user.id) {
             return res.status(401).send({ message: "Token invalido!" });

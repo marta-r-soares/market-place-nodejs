@@ -1,6 +1,6 @@
 const Usuario = require("../model/Usuario");
 
-const findUserByIdSerevice =  (id) => {
+const findUserByIdService =  (id) => {
     return Usuario.findById(id);
 }
 
@@ -67,7 +67,7 @@ const removeUserFavProductService  =  (produto) => {
 }
 
 module.exports = {
-    findUserByIdSerevice,
+    findUserByIdService,
     findAllUsersService,
     createUserService,
     updateUserService, 
