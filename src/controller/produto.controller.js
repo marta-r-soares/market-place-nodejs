@@ -2,7 +2,7 @@ const produtoService = require("../service/produto.service");
 
 const findProductByIdController = async (req, res) => {
     try {
-        res.status(200).send(await produtoService.findProductByIdService(req.params.id));
+        res.send(await produtoService.findProductByIdService(req.params.id));
     }
     catch (err) {
         console.log(`erro: ${err.message}`);
@@ -10,12 +10,12 @@ const findProductByIdController = async (req, res) => {
     }
 };
 
-const findAllProductController = async (req, res) => {
+const findAllProductsController = async (req, res) => {
     try {
-        res.status(200).send(await produtoService.findAllProductService());
+        res.send(await produtoService.findAllProductsService());
     }
     catch (err) {
-        console.log(`erro: ${err.message} problema findAllController!`);
+        console.log(`erro: ${err.message}`);
         return res.status(500).send({ message: `Erro inesperado, tente novamente!` });
     }
 };
@@ -63,7 +63,7 @@ const deleteProductController = async (req, res) => {
         // }
     }
     catch (err) {
-        console.log(`erro: ${err.message} Problema removeProductController`);
+        console.log(`erro: ${err.message}`);
         return res.status(500).send({ message: `Erro inesperado, tente novamente!` });
     }
 };
@@ -91,7 +91,7 @@ const deleteProductController = async (req, res) => {
 
 module.exports = {
     findProductByIdController,
-    findAllProductController,
+    findAllProductsController,
     createProductController,
     updateProductController,
     deleteProductController
