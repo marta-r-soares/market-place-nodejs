@@ -21,43 +21,6 @@ const deleteProductService = (id) => {
     return Produto.findByIdAndDelete(id);
 };
 
-// const addCategoriaProdutoService = (id, categoria) => {
-//     return Produto.findOneAndUpdate(
-//         {
-//             _id: id,
-//         },
-//         {
-//             $push: {
-//                 categorias: {
-//                     _id: categoria._id,
-//                     createdAt: categoria.createdAt
-//                 }
-//             }
-//         },
-//         {
-//             rawResult: true,
-//         }
-
-//     )
-// }
-
-// const rmCategoriaProdutoService = (id, categoria) => {
-//     return Produto.findOneAndUpdate(
-//         {
-//             _id: id,
-//         },
-//         {
-//             $pull: {
-//                 categorias: {
-//                     _id: categoria._id,
-//                 }
-//             }
-//         },
-//         {
-//             rawResult: true,
-//         }
-//     );
-// }
 
 
 module.exports = {
